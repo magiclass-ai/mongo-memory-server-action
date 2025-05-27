@@ -9,12 +9,11 @@ import { MemoryServerFactory } from './factory/memory-server-factory';
 async function runCommand(command: string, connectionString: string): Promise<string> {
   console.info(`--- Executing the target script: "${command}"`);
 
-  const connectionStringEnvVar = core.getInput('db_connection_env_var');
   const mongoMsDebug = core.getInput('mongoms_debug');
 
   console.log(connectionString, mongoMsDebug);
 
-  process.env[connectionStringEnvVar] = connectionString;
+  core.setOutput('db-connection-string', connectionString);
 
   if (mongoMsDebug) {
     process.env['MONGOMS_DEBUG'] = '1';
