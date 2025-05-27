@@ -1,0 +1,47 @@
+{
+  "name": "mongo-memory-server-action",
+  "description": "Support MongoDB-dependent GitHub Workflows",
+  "version": "1.2.3",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:neofinancial/mongo-memory-server-action.git"
+  },
+  "author": "Neo Financial Engineering <engineering@neofinancial.com>",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "tsc",
+    "doc": "npx typedoc src/index.ts",
+    "format": "prettier --write **/*.ts",
+    "lint": "eslint \"**/*.{ts,js}\"",
+    "package": "NODE_ENV=production ncc build -o build --minify",
+    "test": "jest  --coverage --detectOpenHandles --runInBand",
+    "ci:validate": "node build/validate.js"
+  },
+  "keywords": [
+    "actions",
+    "github",
+    "mongodb",
+    "node"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.4.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.23",
+    "@types/mongodb": "^3.6.19",
+    "@types/node": "^15.12.5",
+    "@vercel/ncc": "^0.38.1",
+    "eslint": "^7.29.0",
+    "eslint-config-neo": "^0.6.2",
+    "jest": "^27.0.6",
+    "mongodb": "^3.6.9",
+    "mongodb-memory-server-core": "^8.6.0",
+    "mongodb-memory-server-global": "^8.6.0",
+    "prettier": "^2.3.2",
+    "ts-jest": "^27.0.3",
+    "ts-node": "^10.0.0",
+    "typedoc": "^0.26.7",
+    "typescript": "4.6.4"
+  }
+}
