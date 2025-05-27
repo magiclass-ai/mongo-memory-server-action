@@ -12,6 +12,8 @@ async function runCommand(command: string, connectionString: string): Promise<st
   const connectionStringEnvVar = core.getInput('db_connection_env_var');
   const mongoMsDebug = core.getInput('mongoms_debug');
 
+  console.log(connectionString, mongoMsDebug);
+
   process.env[connectionStringEnvVar] = connectionString;
 
   if (mongoMsDebug) {
@@ -43,6 +45,8 @@ async function run(): Promise<void> {
     const version = core.getInput('binary_version');
     const maxPoolInput = core.getInput('max_pool_size');
     const maxPoolSize =  maxPoolInput ? Number.parseInt(maxPoolInput) : undefined;
+
+    console.log(dbName, port, storageEngine, version, maxPoolSize);
 
     mongodb = await MemoryServerFactory.generateMemoryServer(dbName, port, storageEngine, version);
 
